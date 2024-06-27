@@ -16,7 +16,7 @@ int create_and_bind(const int port, char const *address) {
     my_addr.sin_port = htons(port);
     my_addr.sin_addr.s_addr = inet_addr(address);
 
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((sockfd = socket(AF_INET, SOCK_STREAM|SOCK_NONBLOCK, 0)) < 0) {
         printf("Error: socket() failed!\n");
         exit(EXIT_FAILURE);
     }  
